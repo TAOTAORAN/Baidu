@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+    <input id="email-input" type="text">
+    <ul id="email-sug-wrapper" class="email-sug"></ul>
+</div>
+<script>
+    const postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+    document.querySelector('#email-input').oninput = function (){
+        display();
+    }
+
+    function getInput (){
+        let input = document.querySelector('#email-input').value; //获取用户输入
+        return input;
+    }
+
+    function tipMaker (){
+        let ul = document.querySelector('#email-sug-wrapper');
+        ul.innerHTML = "";//每次输入先清空列表
+        let input = getInput();
+        let trim = input;
+        let index = input.indexOf("@");
+        let tip = new String();
+        if(index != -1){//如果用户输入存在@
+            trim = input.slice(0,index);//值更改为@前的内容
+            tip = input.slice(index+1);//保存@后的内容
+            // console.log(tip);
+        }
+        for(let i=0; i<postfixList.length; i++){
+            let li = document.createElement("li");
+            li.innerText = trim +"@" + postfixList[i];
+            ul.appendChild(li);
+        }
+
+        let arryMatch = [];//存放匹配的邮箱后缀
+        for(let i=0; i<postfixList.length; i++){
+            let match = postfixList[i].match(tip);
+            if(match != null && match != ""){//如果匹配成功
+                ul.innerHTML = "";
+                arryMatch.push(postfixList[i]);
+                for(let i=0; i<arryMatch.length; i++){
+                    // console.log(arryMatch.length);
+                    let li = document.createElement("li");
+                    li.innerText = trim +"@" + arryMatch[i];
+                    ul.appendChild(li);
+                }
+            }
+        }
+        ul.firstChild.style.background = "gray";
+        return ul;
+    }
+
+    function display(){
+        let ul = tipMaker ();
+        let input = getInput();
+        let num = 0;
+        for(let i=0; i<input.length; i++){
+            if(input.charCodeAt() == 32 || input.charCodeAt() == 12288){
+                num += 1;
+            }
+        }
+        if(input=="" || num == input.length){ //如果没有输入，或者输入全是空格
+            ul.innerHTML = "";
+        }
+        else {
+            tipMaker ();
+        }
+    }
+
+    document.querySelector('#email-sug-wrapper').onmouseover = function (e){
+        let t = e.target || ev.srcElement;
+        if(t.nodeName.toLowerCase() == 'li'){
+            t.style.background = "gray";
+            t.style.cursor = "pointer";
+        }
+    }
+    document.querySelector('#email-sug-wrapper').onmouseout = function (e){
+        let t = e.target || ev.srcElement;
+        if(t.nodeName.toLowerCase() == 'li'){
+            t.removeAttribute("style");
+            t.style.cursor = "default";
+        }
+    }
+    document.querySelector('#email-sug-wrapper').onclick = function (e){
+        let t = e.target || ev.srcElement;
+        if(t.nodeName.toLowerCase() == 'li'){
+            document.querySelector('#email-input').value = t.innerText;
+            document.querySelector('#email-sug-wrapper').innerHTML = "";
+        }
+    }
+
+</script>
+</body>
+</html>

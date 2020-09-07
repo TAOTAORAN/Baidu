@@ -1,0 +1,153 @@
+/* float实现一个两栏布局，左侧占30%宽度，右侧占70%宽度 */
+/* .container {
+    width: 1000px;
+    overflow: hidden;
+    background-color: yellow;
+}
+
+.left {
+    width: 30%;
+    float: left;
+    background-color: blue;
+}
+
+.right {
+    width: 70%;
+    float: left;
+    background-color: green;
+    clear: right;
+} */
+
+
+
+/* position实现一个两栏布局，左侧占30%宽度，右侧占70%宽度 */
+/* .container {
+    position: relative;
+    width: 1000px;
+    height: 800px;
+    background-color: yellow;
+    margin: 0 auto;
+}
+
+.left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    background-color: blue;
+}
+
+.right {
+    position: absolute;
+    top: 0;
+    left: 300px;
+    width: 700px;
+    background-color: green;
+} */
+
+
+
+
+/* flexbox实现一个两栏布局，左侧占30%宽度，右侧占70%宽度 */
+/* .container {
+    display: flex;
+    flex: wrap;
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: yellow;
+}
+
+.left {
+    width: 30%;
+    background-color: blue;
+}
+
+.right {
+    width: 70%;
+    background-color: green;
+} */
+
+
+
+
+/* float实现一个两栏布局，左侧固定宽度，右侧根据浏览器宽度进行自适应变化 */
+/* * {
+    margin: 0;
+    padding: 0;
+}
+
+.left {
+    float: left;
+    width: 220px;
+    background-color: blue;
+}
+
+.right {
+    margin-left: 220px;
+    background-color: green;
+} */
+
+
+/* position实现一个两栏布局，左侧固定宽度，右侧根据浏览器宽度进行自适应变化 */
+/* * {
+    padding: 0;
+    margin: 0;
+}
+.left {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 220px;
+    background-color: blue;
+}
+
+.right {
+    position: absolute;
+    left: 220px;
+    top: 0;
+    width: calc(100%-220px);
+    background-color: green;
+} */
+
+
+/* flexbox实现一个两栏布局，左侧固定宽度，右侧根据浏览器宽度进行自适应变化 */
+/* * {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.left {
+    width: 220px;
+    background-color: blue;
+    flex: none;
+}
+
+.right {
+    background-color: green;
+    flex: 1 1 auto;
+} */
+
+
+/* float实现一个两栏布局，右侧固定宽度，左侧根据浏览器宽度进行自适应变化 */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+.right {
+    float: right;
+    width: 220px;
+    background-color: blue;
+}
+
+.left {
+    margin-right: 220px;
+    background-color: green;
+}

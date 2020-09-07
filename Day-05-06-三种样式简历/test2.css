@@ -1,0 +1,27 @@
+body {
+    width: 600px;
+    height: 860px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    float: left;
+    width: 25%;
+    height: 100%;
+    background-color: #6699ff;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.information {
+    float: right;
+    width: 68%;
+    height: 100%;
+}

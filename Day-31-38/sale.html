@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse:collapse;
+        }
+        td,
+        th {
+            font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size:1em;
+            color:#000000;
+            background-color:#EAF2D3;
+            border:1px solid #98bf21;
+            padding:3px 7px 2px 7px;
+            cursor: url("pencil.ico"),auto;
+        }
+        td:hover {
+            background-color:pink;
+        }
+        #drawContainer {
+            margin-top: 50px;
+            position: relative;
+        }
+        #drawCanvas {
+            position: absolute;
+            top:0px;
+            left:0px;
+        }
+    </style>
+</head>
+<body>
+    <select id="product-select">
+        <option>手机</option>
+        <option>笔记本</option>
+        <option>智能音箱</option>
+    </select>
+    <select id="region-select">
+        <option>华东</option>
+        <option>华北</option>
+        <option>华南</option>
+    </select>
+    <select id="month-select">
+        <option>1月</option>
+        <option>2月</option>
+        <option>3月</option>
+        <option>4月</option>
+        <option>5月</option>
+        <option>6月</option>
+        <option>7月</option>
+        <option>8月</option>
+        <option>9月</option>
+        <option>10月</option>
+        <option>11月</option>
+        <option>12月</option>
+        <option>全部</option>
+    </select>
+    <button id="submit">提交</button>
+    <button id="initialize">显示全部</button>
+    <!-- <div id="checkProduct">
+        <h7>产品：</h7>
+        <label>手机</label>
+        <input id="phone" type="checkbox" checked="checked">
+        <label>笔记本</label>
+        <input id="laptop" type="checkbox" checked="checked">
+        <label>智能音箱</label>
+        <input id="sound" type="checkbox" checked="checked">
+    </div>
+    <div id="checkRegion">
+        <h7>地区：</h7>
+        <label>华东</label>
+        <input id="hd" type="checkbox" checked="checked">
+        <label>华南</label>
+        <input id="hn" type="checkbox" checked="checked">
+        <label>华北</label>
+        <input id="hb" type="checkbox" checked="checked">
+    </div>
+    <div>
+        <h7>确认勾选：</h7>
+        <button id="enter">确认</button>
+        <label>全选:</label>
+        <input id="all" type="checkbox" checked="checked">
+    </div> -->
+
+    <div id="table-wrapper">
+        <table id="saleTable">
+            <tr id="head">
+                <th>产品</th>
+                <th>地区</th>
+                <th>1月</th>
+                <th>2月</th>
+                <th>3月</th>
+                <th>4月</th>
+                <th>5月</th>
+                <th>6月</th>
+                <th>7月</th>
+                <th>8月</th>
+                <th>9月</th>
+                <th>10月</th>
+                <th>11月</th>
+                <th>12月</th>
+            </tr>
+        </table>
+    </div>
+    <div id="drawContainer">
+        <div id="drawSVG">
+        </div>
+        <div id="drawCanvas">
+        </div>
+    </div>
+    <script src="ife31data.js"></script>
+    <script src="table.js"></script>
+    <script src="td2input2td.js"></script>
+    <script src="svg.js"></script>
+    <script src="canvas.js"></script>
+    <script src="drawChart.js"></script>
+</body>
+</html>

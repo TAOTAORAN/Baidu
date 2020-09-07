@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var menuArr = [
+    [1, "Area1", -1],
+    [2, "Area2", -1],
+    [3, "Area1-1", 1],
+    [4, "Area1-2", 1],
+    [5, "Area2-1", 2],
+    [6, "Area2-2", 2],
+    [7, "Area1-2-3", 4],
+    [8, "Area2-2-1", 6],
+    ];
+    var menuObject = {};
+    for (let i=0; i<menuArr.length; i++) {
+        if (menuArr[i][2] == -1) {
+            console.log(menuArr[i][0]);
+            menuObject[menuArr[i][0]]= {
+                "name":menuArr[i][1],
+                "subMenu":{
+                }
+            }
+        }else {
+            function find(obj,num) {
+                for (x in obj) {
+                    if (x==num) {
+                        obj[x].subMenu[menuArr[i][0]] = {
+                            "name":menuArr[i][1],
+                            "subMenu":{
+                            }
+                        };
+                        return;
+                    }else {
+                        find(obj[x].subMenu,num);
+                    }
+                }
+            }
+            find(menuObject,menuArr[i][2]);
+        }
+    }
+    console.log(menuObject);
+</script>
+</body>
+</html>

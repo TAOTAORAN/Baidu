@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <label for="fc">Full calendar and time</label>
+    <input type="datetime-local" name="cal" id="fc">
+    <button id="btn">确认</button>
+
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+<script>
+    function diff(){
+        let input = document.querySelector('#fc').value;
+        let setTime = new Date(input);
+        let nowTime = new Date();
+        var dateDiff = nowTime.getTime() - setTime.getTime();//时间差的毫秒数
+        var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+        var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+        var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+        //计算相差分钟数
+        var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+        var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+        //计算相差秒数
+        var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+        var seconds=Math.round(leave3/1000)
+        console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
+        document.querySelector('#result-wrapper').innerText = " 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒"
+    }
+    document.querySelector('#btn').onclick = diff;
+</script>
+</body>
+</html>

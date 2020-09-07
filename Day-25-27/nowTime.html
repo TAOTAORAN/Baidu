@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="now"></div>
+<script>
+    window.onload=function(){
+        setInterval("nowTime()",1000);
+    }
+
+    function nowTime(){
+        var now = new Date();
+        var nowYear = now.getFullYear();
+        var nowMonth = now.getMonth() + 1;
+        var nowDate = now.getDate();
+        var nowDay = now.getDay();
+        var nowHours = now.getHours();
+        var nowMinutes = now.getMinutes();
+        var nowSeconds = now.getSeconds();
+
+        nowDay = checkDay(nowDay);
+
+        nowMonth=check(nowMonth);
+        nowDate=check(nowDate);
+        nowHours=check(nowHours);
+        nowMinutes=check(nowMinutes);
+        nowSeconds=check(nowSeconds);
+        
+        // document.querySelector('#now').innerHTML = nowYear+"年"+nowMonth+"月"+nowDate+"日"+"星期"+nowDay+"-"+nowHours+":"+nowMinutes+":"+nowSeconds;
+
+        document.querySelector('#now').innerHTML = nowYear+"-"+nowMonth+"-"+nowDate+" "+nowDay+"-"+nowHours+":"+nowMinutes+":"+nowSeconds;
+    }
+
+    function check(i){
+                var num;
+                i<10?num="0"+i:num=i;
+                return num;
+            }
+
+    function checkDay(nowDay){
+        switch (nowDay) {
+            case 0:
+                nowDay = "Sunday";
+                break;
+            case 1:
+                nowDay = "Monday";
+                break;
+            case 2:
+                nowDay = "Tuesday";
+                break;
+            case 3:
+                nowDay = "Wednesday";
+                break;
+            case 4:
+                nowDay = "Thursday";
+                break;
+            case 5:
+                nowDay = "Friday";
+                break;
+            case 6:
+                nowDay = "Saturda";
+                break;
+        }
+        return nowDay;
+    }
+
+    function returnDay (year,month,day){
+        let findDate = new Date();
+        findDate.setFullYear(year,month-1,day);
+        console.log(findDate.getDay());
+    }
+</script>
+</body>
+</html>

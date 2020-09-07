@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var arr1 = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+    var arr2 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+    var arr3 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+    var arr4 = [
+    {
+        id: 1,
+        name: 'candy',
+        value: 40
+    }, {
+        id: 2,
+        name: 'Simon',
+        value: 50
+    }, {
+        id: 3,
+        name: 'Tony',
+        value: 45
+    }, {
+        id: 4,
+        name: 'Annie',
+        value: 60
+    }
+];
+    function sortNumber(a,b){
+        return a - b;
+    }
+
+    function twoD (a,b){
+        return b[1] - a[1];
+    }
+
+    function object(a,b){
+        return a.value - b.value;
+    }
+    // document.write(arr1.sort(sortNumber));
+
+    // document.write(arr2.sort());
+
+    // document.write(arr2.sort().reverse());
+
+    // document.write(arr3.sort(twoD));
+
+    // document.write(arr4.sort(object));
+</script>
+</body>
+</html>

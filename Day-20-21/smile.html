@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+    <style>
+        div {
+            width: 480px;
+            height: 480px;
+            background-image: url(smile.jpg);
+            background-position:0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+function smile(){
+    const div = document.querySelector("div");
+    let m = 0;
+    let interval1 = setInterval(function(){
+        m = m - 480;
+        div.style.backgroundPositionY = m+'px';
+        console.log(m);
+        //图片总长为8160 
+        if(m== -7680){
+            clearInterval(interval1);
+            let n = m;
+            let interval2 = setInterval(function(){
+                n = n + 480;
+                div.style.backgroundPositionY = n+'px';
+                console.log(n);
+                if(n== 0){
+                    clearInterval(interval2);
+                }
+            },90);
+        }
+    },90);
+}
+smile(); // 实现页面一打开就执行，无需等待2700ms
+let interval = setInterval('smile()',2700);
+</script>
+</html>

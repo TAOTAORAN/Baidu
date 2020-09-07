@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+//餐厅构造函数
+function Restaurant(money,seats,staff){
+    this.cash = money;
+    this.seats = seats;
+    this.staff = staff;
+}
+Restaurant.prototype.hire = function (){
+    console.log('招募员工');
+}
+Restaurant.prototype.fire = function (){
+    console.log('解雇员工');
+}
+//员工构造函数
+function Staffs (ID,name,salary){
+    this.ID = ID;
+    this.name = name;
+    this.salary = salary;
+}
+Staffs.prototype.working = function (){
+    console.log('完成一次工作');
+}
+//服务员构造函数
+function Waiter(ID,name,salary){
+    Staffs.call(this,ID,name,salary);
+    this.instance = null;
+}
+Waiter.prototype = Object.create(Staffs.prototype);//waiter.prototype = new employees();
+Waiter.prototype.constructor = Waiter;
+Waiter.prototype.registerFood = function(orderFood){
+    console.log('服务员'+this.name+' ,记录了客人点的'+orderFood.name);
+}
+Waiter.prototype.servingFood = function(orderFood){
+    console.log('服务员'+this.name+' ,为客人端上'+orderFood.name);
+}
+Waiter.getInstance = function(ID,name,salary) {
+    if (!this.instance) {
+        this.instance = new Waiter(ID,name,salary);
+    }
+    return this.instance;
+};
+//厨师构造函数
+function Chef(ID,name,salary){
+    Staffs.call(this,ID,name,salary);
+    this.instance = null;
+}
+Chef.prototype = Object.create(Staffs.prototype);
+Chef.prototype.constructor = Chef;
+Chef.prototype.cooking = function cooking(orderFood){
+    console.log('厨师:'+this.name+' ,做好了这道'+orderFood.name);
+}
+Chef.getInstance = function(ID,name,salary) {
+    if (!this.instance) {
+        this.instance = new Chef(ID,name,salary);
+    }
+    return this.instance;
+};
+//顾客构造函数
+function Customer(name){
+    this.name = name;
+}
+Customer.prototype.order = function order(orderFood){
+    console.log('客人'+this.name+'点了一道:' + orderFood.name + ' 价格:' + orderFood.price);
+}
+Customer.prototype.eat = function eat(orderFood){
+    console.log('客人'+this.name+'吃完了这道, '+ orderFood.name);
+}
+//菜品构造函数
+function Food(name,price){
+    this.name = name;
+    // this.principal = principal;
+    this.price = price;
+}
+
+let xiaoSiChuanR = new Restaurant(800,1,2);
+let tomW = Waiter.getInstance(1,"Tom",100);
+let jerryC = Chef.getInstance(2,"Jerry",200);
+
+
+function getInstanceRandomFood(){
+    let nameList = ['宫保鸡丁','家常豆腐','麻婆豆腐','老碗鱼','豆角茄子','烤鸡翅','锅巴肉片'];
+    let priceList = [28,16,14,45,18,5,24];
+    let i = null;
+    (function food (){
+        i = Math.floor(7*Math.random());
+        return i;
+    })();
+    let orderFood = new Food(nameList[i],priceList[i]);
+    return orderFood;
+}
+
+let customerList = ['张先生','王先生','张女士','胡大爷','路小哥','陈小姐'];
+function customers(){
+    let customer = new Customer(customerList[0]);
+    if(customerList.length!=0){
+        console.log('客人：'+customer.name+'入座。');
+    }
+    else{
+        alert('没有客人了');
+    }
+    customerList.shift();
+    return customer
+}
+
+function loop(){
+    let orderFood = getInstanceRandomFood();
+    let customer = customers();
+
+    customer.order(orderFood);
+    tomW.registerFood(orderFood);
+    jerryC.cooking(orderFood);
+    tomW.servingFood(orderFood);
+    customer.eat(orderFood);
+}
+
+
+while(customerList.length>0){
+    loop(getInstanceRandomFood());
+}
+// setInterval(loop(),1000);
+
+</script>
+</html>

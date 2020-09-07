@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+/*
+实现一个字符串头尾去除空格的函数
+注意需要去除的空格，包括全角、半角空格
+暂时不需要学习和使用正则表达式的方式
+*/
+function diyTrim(str) {
+var result = "";
+var array = [];
+var first = 0;
+var last = str.length-1;
+// do something
+    for(let i=0; str.charCodeAt(i) == 32 || str.charCodeAt(i) == 12288; i++){
+        first = i+1;
+    };
+    console.log(first);
+
+    for(let j=str.length-1; str.charCodeAt(j) == 32 || str.charCodeAt(j) == 12288; j--){
+        last = j-1;
+    };
+    console.log(last);
+    if(first !== last){
+        for(let k=first; k<=last; k++){
+            array.push(str[k]);
+        }
+    }
+    else if(first == 1 && last == -1){
+        array.push(str);
+    }
+    else {
+        array.push(str[first]);
+    }
+    result = array.join("");
+    console.log(result.length);
+return result;
+}
+console.log(diyTrim('   Helle   ')); // ->
+</script>
+
+</body>
+</html>

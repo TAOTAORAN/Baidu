@@ -1,0 +1,257 @@
+/* float实现一个两栏布局，右侧固定宽度，左侧根据浏览器宽度进行自适应变化 */
+/* * {
+  padding: 0;
+  margin: 0;
+}
+
+.right {
+  float: right;
+  width: 200px;
+  background-color: blue;
+}
+
+.left {
+  margin-right: 200px;
+  background-color: green;
+} */
+
+
+/* position实现一个两栏布局，右侧固定宽度，左侧根据浏览器宽度进行自适应变化 */
+/* * {
+  padding: 0;
+  margin: 0;
+  }
+
+.container {
+  position: relative;
+}
+
+.right {
+  width: 200px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: blue;
+}
+
+.left {
+  position: absolute;
+  margin-right: 200px;
+  width: calc(100% - 200px);
+  background-color: green;
+} */
+
+
+/* flexbox实现一个两栏布局，右侧固定宽度，左侧根据浏览器宽度进行自适应变化 */
+/* * {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.left {
+  width: calc(100% - 200px);
+  background-color: green;
+}
+
+.right {
+  width: 200px;
+  background-color: blue;
+} */
+
+
+/* float实现一个三栏布局，左侧固定宽度，右侧固定宽度，中间部分宽度随浏览器宽度变化而自适应变化 */
+/* 非float元素在前的话会排斥floa元素，注意html文件中的div顺序 */
+/* * {
+  padding: 0;
+  margin: 0;
+}
+
+.left {
+  width: 200px;
+  float: left;
+  background-color: blue;
+}
+
+.content {
+  width: calc(100% - 400px);
+  background-color: yellow;
+  margin: 0 200px 0 200px;
+}
+
+.right {
+  width: 200px;
+  float: right;
+  background-color: green;
+} */
+
+
+
+/* position实现一个三栏布局，左侧固定宽度，右侧固定宽度，中间部分宽度随浏览器宽度变化而自适应变化 */
+/* * {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  background-color: #aaa;
+}
+
+.left {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: blue;
+}
+
+.content {
+  position: absolute;
+  margin: 0 200px 0 200px;
+  width: calc(100% - 400px);
+  background-color: yellow;
+}
+
+.right {
+  position: absolute;
+  width: 200px;
+  top: 0;
+  right: 0;
+  background-color: green;
+} */
+
+
+
+
+/* flexbox实现一个三栏布局，左侧固定宽度，右侧固定宽度，中间部分宽度随浏览器宽度变化而自适应变化 */
+/* * {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  background-color: #aaa;
+}
+
+.left {
+  width: 200px;
+  background-color: blue;
+}
+
+.content {
+  width: calc(100% - 400px);
+  background-color: yellow;
+}
+
+.right {
+  width: 200px;
+  background-color: green;
+} */
+
+
+
+/* float实现一个三栏布局，左侧固定宽度，中间固定宽度，右侧根据浏览器宽度变化而自适应变化 */
+/* 如果又出现某部分下掉，即使更改html中的元素顺序也无法更正的情况，可以嵌套div，把左中右当作大左和右 */
+  /* 如：<div class="Left">
+    <div class="left">左中右布局，左侧固定</div>
+    <div class="content"> 左中右布局，中间固定</div>
+    </div>
+    <div class="right"> 左中右布局，右侧宽度随窗口宽度自适应变化</div> */
+/* * {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  width: 1000px;
+}
+
+.Left {
+  float: left;
+  width: 400px;
+}
+
+.left {
+  float: left;
+  width: 200px;
+  background-color: blue;
+}
+
+.content {
+  width: 200px;
+  margin-left: 200px;
+  background-color: yellow;
+}
+
+.right {
+  margin-left: 400px;
+  background-color: green;
+  width: calc(100% - 400px);
+} */
+
+
+
+/* position实现一个三栏布局，左侧固定宽度，中间固定宽度，右侧根据浏览器宽度变化而自适应变化 */
+/* * {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  background-color: #aaa;
+}
+
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  background-color: blue;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  width: 200px;
+  background-color: yellow;
+}
+
+.right {
+  position: absolute;
+  top: 0;
+  left: 400px;
+  width: calc(100% - 400px);
+  background-color: green;
+} */
+
+/* flexbox实现一个三栏布局，左侧固定宽度，中间固定宽度，右侧根据浏览器宽度变化而自适应变化 */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  background-color: #aaa;
+}
+
+.left {
+  width: 200px;
+  background-color: blue;
+}
+
+.content {
+  width: 200px;
+  background-color: yellow;
+}
+
+.right {
+  width: calc(100% - 400px);
+  background-color: green;
+}

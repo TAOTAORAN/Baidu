@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    <div id="cont"></div>
+</body>
+<script>
+function getHash (){
+    let hash = location.hash;
+
+    return hash;
+};
+
+function renderer(){
+    let cont = "";
+    let hash = getHash ();
+    switch(hash){
+        case "#a":
+            cont = "a"
+            break;
+        case "#b":
+            cont = "b"
+            break;
+        case "#c":
+            cont = "c"
+            break;
+    }
+    document.querySelector('#cont').innerHTML = cont;
+};
+
+document.querySelector('#a').onclick = function (){
+    location.hash = "#a";
+    renderer();
+}
+document.querySelector('#b').onclick= function (){
+    location.hash = "#b";
+    renderer();
+}
+document.querySelector('#c').onclick= function (){
+    location.hash = "#c";
+    renderer();
+}
+
+window.onhashchange = renderer();
+
+</script>
+</html>
